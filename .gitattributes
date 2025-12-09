@@ -1,0 +1,7 @@
+# Mark templates as documentation, not primary code
+*.html linguist-documentation
+*.css linguist-documentation
+*.js linguist-documentation
+
+# Python is the primary language
+*.py linguist-detectable=true
