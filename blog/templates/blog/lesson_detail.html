@@ -1,0 +1,125 @@
+<!-- blog/templates/blog/lesson_detail.html -->
+{% extends 'blog/base.html' %}
+{% load markdown_extras %}
+
+{% block title %}{{ lesson.title }} - Python Blog{% endblock %}
+{% block meta_description %}{{ lesson.excerpt }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <!-- Animated background (subtle) -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-vscode-blue rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-cyan rounded-full mix-blend-multiply filter blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center space-x-2 text-sm text-blue-200 mb-6 animate-fade-in">
+            <a href="{% url 'blog:lesson_list' %}" class="hover:text-white transition">
+                <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                </svg>
+                Lekcje
+            </a>
+            <span>→</span>
+            <a href="{% url 'blog:lesson_list_by_category' lesson.category.slug %}" class="hover:text-white transition">
+                {{ lesson.category.icon }} {{ lesson.category.name }}
+            </a>
+            <span>→</span>
+            <span class="text-white">{{ lesson.title }}</span>
+        </nav>
+
+        <!-- Title & Meta -->
+        <div class="animate-fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                {{ lesson.title }}
+            </h1>
+
+            <!-- Meta badges -->
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-sm text-blue-100">
+                    <span class="text-xl">{{ lesson.category.icon }}</span>
+                    {{ lesson.category.name }}
+                </span>
+
+                {% if lesson.difficulty == 'beginner' %}
+                <span class="px-4 py-2 bg-green-500/20 text-green-300 border border-green-500/30 backdrop-blur-sm rounded-lg text-sm font-semibold">
+                    ⭐ Początkujący
+                </span>
+                {% elif lesson.difficulty == 'intermediate' %}
+                <span class="px-4 py-2 bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 backdrop-blur-sm rounded-lg text-sm font-semibold">
+                    ⭐⭐ Średniozaawansowany
+                </span>
+                {% elif lesson.difficulty == 'advanced' %}
+                <span class="px-4 py-2 bg-red-500/20 text-red-300 border border-red-500/30 backdrop-blur-sm rounded-lg text-sm font-semibold">
+                    ⭐⭐⭐ Zaawansowany
+                </span>
+                {% endif %}
+
+                <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-sm text-blue-100">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    {{ lesson.published_at|date:"d.m.Y" }}
+                </span>
+
+                <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-sm text-blue-100">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    {{ lesson.views_count }} wyświetleń
+                </span>
+            </div>
+
+            <!-- Excerpt box -->
+            <div class="bg-vscode-blue/20 border border-vscode-blue/30 backdrop-blur-sm rounded-xl p-6">
+                <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-10 h-10 bg-vscode-blue/30 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-white mb-2">Czego się nauczysz</h2>
+                        <p class="text-blue-100">{{ lesson.excerpt }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content -->
+<article class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Main Content with better styling -->
+    <div class="bg-dark-card border border-dark-border rounded-2xl p-8 mb-8">
+        <div class="prose-custom max-w-none">
+            {{ lesson.content|markdown|safe }}
+        </div>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-between items-center">
+        <a href="{% url 'blog:lesson_list' %}"
+           class="inline-flex items-center gap-2 px-6 py-3 bg-dark-card border border-dark-border text-text-light rounded-lg hover:bg-dark-lighter hover:border-vscode-blue transition group">
+            <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            Wszystkie lekcje
+        </a>
+
+        <a href="{% url 'blog:lesson_list_by_category' lesson.category.slug %}"
+           class="inline-flex items-center gap-2 px-6 py-3 bg-vscode-blue text-white font-semibold rounded-lg hover:bg-vscode-blue/80 transition group">
+            Więcej z {{ lesson.category.name }}
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+        </a>
+    </div>
+
+</article>
+{% endblock %}

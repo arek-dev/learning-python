@@ -1,0 +1,64 @@
+<!-- blog/templates/blog/components/navbar.html -->
+<nav class="bg-dark-card shadow-lg sticky top-0 z-50 border-b border-dark-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="{% url 'blog:home' %}" class="flex items-center space-x-2 text-xl font-bold text-text-light hover:text-vscode-blue transition">
+                    <span class="text-3xl">🐍</span>
+                    <span>Python Blog</span>
+                </a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="{% url 'blog:home' %}" class="text-text-light hover:text-vscode-blue font-medium transition">
+                    🏠 Home
+                </a>
+                <a href="{% url 'blog:lesson_list' %}" class="text-text-light hover:text-vscode-blue font-medium transition">
+                    📖 Lekcje
+                </a>
+                <a href="{% url 'blog:resources' %}" class="text-text-light hover:text-vscode-blue font-medium transition">
+                    📚 Biblioteka
+                </a>
+                <a href="{% url 'blog:about' %}" class="text-text-light hover:text-vscode-blue font-medium transition">
+                    👤 O mnie
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-text-light hover:text-vscode-blue focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-t border-dark-border">
+        <div class="px-4 pt-2 pb-4 space-y-2">
+            <a href="{% url 'blog:home' %}" class="block py-2 text-text-light hover:text-vscode-blue font-medium">
+                🏠 Home
+            </a>
+            <a href="{% url 'blog:lesson_list' %}" class="block py-2 text-text-light hover:text-vscode-blue font-medium">
+                📖 Lekcje
+            </a>
+            <a href="{% url 'blog:resources' %}" class="block py-2 text-text-light hover:text-vscode-blue font-medium">
+                📚 Biblioteka
+            </a>
+            <a href="{% url 'blog:about' %}" class="block py-2 text-text-light hover:text-vscode-blue font-medium">
+                👤 O mnie
+            </a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>

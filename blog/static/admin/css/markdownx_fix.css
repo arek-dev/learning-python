@@ -1,0 +1,188 @@
+/* blog/static/admin/css/markdownx_fix.css */
+
+/* ============================================
+   MARKDOWNX EDITOR FIX DLA DJANGO ADMIN
+   ============================================ */
+
+/* Kontener */
+.markdownx {
+    width: 100% !important;
+    display: flex !important;
+    gap: 15px !important;
+    margin: 20px 0 !important;
+}
+
+/* Editor - lewa strona */
+.markdownx-editor {
+    width: 50% !important;
+    min-height: 500px !important;
+    height: 600px !important;
+    font-family: 'Monaco', 'Menlo', 'Courier New', monospace !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    padding: 15px !important;
+    border: 1px solid #444 !important;
+    border-radius: 6px !important;
+    background: #1e1e1e !important;
+    color: #d4d4d4 !important;
+    resize: vertical !important;
+    overflow-y: auto !important;
+}
+
+/* Preview - prawa strona */
+.markdownx-preview {
+    width: 50% !important;
+    min-height: 500px !important;
+    height: 600px !important;
+    padding: 20px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 6px !important;
+    background: #ffffff !important;
+    color: #2c3e50 !important;
+    overflow-y: auto !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+}
+
+/* Nagłówki w preview */
+.markdownx-preview h1 {
+    color: #2c3e50 !important;
+    font-size: 2em !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    border-bottom: 3px solid #3498db !important;
+    padding-bottom: 10px !important;
+}
+
+.markdownx-preview h2 {
+    color: #34495e !important;
+    font-size: 1.6em !important;
+    margin-top: 30px !important;
+    margin-bottom: 15px !important;
+    border-bottom: 2px solid #ecf0f1 !important;
+    padding-bottom: 8px !important;
+}
+
+.markdownx-preview h3 {
+    color: #34495e !important;
+    font-size: 1.3em !important;
+    margin-top: 25px !important;
+    margin-bottom: 10px !important;
+}
+
+/* Paragrafy */
+.markdownx-preview p {
+    margin-bottom: 15px !important;
+    color: #2c3e50 !important;
+}
+
+/* Listy */
+.markdownx-preview ul,
+.markdownx-preview ol {
+    margin: 15px 0 15px 25px !important;
+    color: #2c3e50 !important;
+}
+
+.markdownx-preview li {
+    margin-bottom: 8px !important;
+}
+
+/* Bloki kodu */
+.markdownx-preview pre {
+    background: #282c34 !important;
+    color: #abb2bf !important;
+    padding: 15px !important;
+    border-radius: 6px !important;
+    overflow-x: auto !important;
+    margin: 20px 0 !important;
+    border: 1px solid #3e4451 !important;
+}
+
+.markdownx-preview pre code {
+    font-family: 'Monaco', 'Courier New', monospace !important;
+    font-size: 13px !important;
+    color: #abb2bf !important;
+    background: transparent !important;
+}
+
+/* Inline code */
+.markdownx-preview :not(pre) > code {
+    background: #f4f4f4 !important;
+    color: #e83e8c !important;
+    padding: 3px 7px !important;
+    border-radius: 3px !important;
+    font-family: 'Monaco', 'Courier New', monospace !important;
+    font-size: 0.9em !important;
+}
+
+/* Pogrubienie i kursywa */
+.markdownx-preview strong {
+    color: #2c3e50 !important;
+    font-weight: 600 !important;
+}
+
+.markdownx-preview em {
+    color: #2c3e50 !important;
+}
+
+/* Linki */
+.markdownx-preview a {
+    color: #3498db !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid #3498db !important;
+}
+
+.markdownx-preview a:hover {
+    color: #2980b9 !important;
+    border-bottom-color: #2980b9 !important;
+}
+
+/* Cytaty */
+.markdownx-preview blockquote {
+    border-left: 4px solid #3498db !important;
+    padding-left: 20px !important;
+    margin: 20px 0 !important;
+    color: #555 !important;
+    font-style: italic !important;
+}
+
+/* Obrazki */
+.markdownx-preview img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 6px !important;
+    margin: 15px 0 !important;
+}
+
+/* Tabele */
+.markdownx-preview table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 20px 0 !important;
+}
+
+.markdownx-preview th,
+.markdownx-preview td {
+    padding: 10px !important;
+    border: 1px solid #ddd !important;
+    text-align: left !important;
+    color: #2c3e50 !important;
+}
+
+.markdownx-preview th {
+    background: #3498db !important;
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+.markdownx-preview tr:nth-child(even) {
+    background: #f9f9f9 !important;
+}
+
+/* Separatory */
+.markdownx-preview hr {
+    border: none !important;
+    border-top: 2px solid #ecf0f1 !important;
+    margin: 30px 0 !important;
+}

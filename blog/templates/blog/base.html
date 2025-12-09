@@ -1,0 +1,63 @@
+{% load static %}
+<!-- blog/templates/base.html -->
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}Blog edukacyjny o Pythonie i Django{% endblock %}">
+
+    <title>{% block title %}Python & Django Blog{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'blog/css/output.css' %}">
+
+    <!-- Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'blog/css/main.css' %}"> {% endcomment %}
+
+  
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body class="bg-dark-bg text-text-light flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    {% include 'blog/components/navbar.html' %}
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    {% include 'blog/components/footer.html' %}
+
+    <!-- Syntax Highlighting JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+    <script>
+        // Highlight all code blocks
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+
+                // Add copy button to code blocks
+                const pre = block.parentElement;
+                const button = document.createElement('button');
+                button.className = 'copy-btn';
+                button.textContent = 'Copy';
+                button.onclick = function() {
+                    navigator.clipboard.writeText(block.textContent);
+                    button.textContent = 'Copied!';
+                    setTimeout(() => button.textContent = 'Copy', 2000);
+                };
+                pre.style.position = 'relative';
+                pre.appendChild(button);
+            });
+        });
+    </script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

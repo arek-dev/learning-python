@@ -1,0 +1,27 @@
+{
+  "name": "learning_hub",
+  "version": "1.0.0",
+  "description": "Kompletna dokumentacja aplikacji blogowej stworzonej w Django 5.2.8 z funkcjonalnością edukacyjną.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx @tailwindcss/cli -i ./blog/static/blog/css/src/input.css -o ./blog/static/blog/css/output.css --watch",
+    "build": "npx @tailwindcss/cli -i ./blog/static/blog/css/src/input.css -o ./blog/static/blog/css/output.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arek-dev/learning-hub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arek-dev/learning-hub/issues"
+  },
+  "homepage": "https://github.com/arek-dev/learning-hub#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.17",
+    "tailwindcss": "^4.1.17"
+  },
+  "type": "commonjs"
+}

@@ -1,0 +1,180 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<!-- Hero Section with animated background -->
+<div class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <!-- Animated background blobs -->
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-0 left-1/4 w-72 h-72 bg-vscode-blue rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-72 h-72 bg-vscode-purple rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-0 left-1/2 w-72 h-72 bg-accent-cyan rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="text-center">
+            <!-- Icon/logo -->
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-vscode-blue/20 rounded-2xl mb-6 backdrop-blur-sm animate-float">
+                <span class="text-5xl">🐍</span>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4 animate-fade-in">
+                Nauka Pythona i Django
+            </h1>
+            <p class="text-xl text-blue-200 max-w-2xl mx-auto mb-8 animate-fade-in">
+                Praktyczne lekcje, gotowe snippety, realne projekty
+            </p>
+
+            <!-- Quick stats -->
+            <div class="flex justify-center gap-8 mt-8 animate-slide-up">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white">{{ total_lessons }}</div>
+                    <div class="text-sm text-blue-300">Lekcji dostępnych</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white">{{ categories.count }}</div>
+                    <div class="text-sm text-blue-300">Kategorii tematycznych</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white">100%</div>
+                    <div class="text-sm text-blue-300">Darmowych materiałów</div>
+                </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="flex gap-4 justify-center mt-8">
+                <a href="{% url 'blog:lesson_list' %}"
+                   class="bg-vscode-blue text-white px-8 py-3 rounded-lg font-semibold hover:bg-vscode-blue/80 transition animate-fade-in">
+                    Zobacz wszystkie lekcje
+                </a>
+                <a href="{% url 'blog:lesson_list' %}?difficulty=beginner"
+                   class="border-2 border-vscode-blue text-white px-8 py-3 rounded-lg font-semibold hover:bg-vscode-blue hover:text-white transition animate-fade-in">
+                    Zacznij od podstaw
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Dla kogo? -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-white">Dla kogo jest ten blog?</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-dark-card border border-dark-border rounded-2xl p-6 hover:shadow-lg transition">
+            <div class="text-center">
+                <div class="text-5xl mb-4">🎓</div>
+                <h3 class="font-bold text-xl mb-2 text-white">Początkujący</h3>
+                <p class="text-gray-400">
+                    Zaczynasz przygodę z Pythonem? Lekcje od podstaw.
+                </p>
+            </div>
+        </div>
+        <div class="bg-dark-card border border-dark-border rounded-2xl p-6 hover:shadow-lg transition">
+            <div class="text-center">
+                <div class="text-5xl mb-4">💡</div>
+                <h3 class="font-bold text-xl mb-2 text-white">Samoucy</h3>
+                <p class="text-gray-400">
+                    Uczysz się sam? Gotowe rozwiązania i praktyczne przykłady.
+                </p>
+            </div>
+        </div>
+        <div class="bg-dark-card border border-dark-border rounded-2xl p-6 hover:shadow-lg transition">
+            <div class="text-center">
+                <div class="text-5xl mb-4">💻</div>
+                <h3 class="font-bold text-xl mb-2 text-white">Junior Devs</h3>
+                <p class="text-gray-400">
+                    Pierwszy projekt Django? Best practices dla początkujących.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- O projekcie -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="bg-dark-card border border-dark-border rounded-2xl p-8 mb-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Jak to się wszystko zaczęło?</h2>
+            <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                Ta strona narodziła się z potrzeby zmiany. Przez lata zajmowałem się grafiką i Drupalem, ale poczułem, że czas na nowe wyzwanie: chcę zostać Python developerem.
+            </p>
+            <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                Jak wielu uczących się, zacząłem gromadzić notatki w Obsidianie. Szybko jednak zdałem sobie sprawę, że mogę zrobić coś lepszego - zamiast trzymać je w prywatnym archiwum, mogę je upublicznić i od razu zbudować coś działającego.
+            </p>
+            <p class="text-gray-300 text-lg leading-relaxed">
+                Tak powstał ten projekt. To mój poligon doświadczalny w Django i publiczny notatnik w jednym. Uczę się, buduję portfolio i przy okazji - mam nadzieję - pomagam innym.
+                Jeśli Ty też jesteś na początku tej drogi, czuj się jak u siebie. Te materiały są dla Ciebie.
+            </p>
+            <div class="mt-6">
+                <a href="{% url 'blog:about' %}" class="inline-flex items-center gap-2 bg-vscode-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-vscode-blue/80 transition">
+                    Więcej o mnie tutaj
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Kategorie -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-white">Ścieżki nauki</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {% for category in categories %}
+        <a href="{% url 'blog:lesson_list_by_category' category.slug %}"
+           class="bg-dark-card border border-dark-border p-6 rounded-2xl hover:shadow-lg transition group">
+            <div class="flex items-center gap-4">
+                <div class="text-4xl group-hover:scale-110 transition-transform">{{ category.icon }}</div>
+                <div class="flex-grow">
+                    <h3 class="font-bold text-xl mb-2 text-white group-hover:text-vscode-blue transition-colors">{{ category.name }}</h3>
+                    <p class="text-gray-400">
+                        {{ category.description|truncatewords:15 }}
+                    </p>
+                    <div class="mt-2 text-vscode-blue font-semibold">
+                        {{ category.lessons.count }} lekcji →
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Najnowsze lekcje -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-white">Najnowsze lekcje</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {% for lesson in recent_lessons %}
+            {% include 'blog/components/lesson_card.html' %}
+        {% endfor %}
+    </div>
+    <div class="text-center mt-8">
+        <a href="{% url 'blog:lesson_list' %}"
+           class="inline-block bg-vscode-blue text-white px-8 py-3 rounded-lg font-semibold hover:bg-vscode-blue/80 transition">
+            Zobacz wszystkie lekcje →
+        </a>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="relative overflow-hidden bg-gradient-to-br from-vscode-blue to-vscode-purple text-white">
+    <!-- Animated background (subtle) -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <h2 class="text-3xl font-bold mb-4">Gotowy/a na naukę?</h2>
+        <p class="text-xl mb-8">Zacznij od podstaw lub wybierz interesujący Cię temat</p>
+        <a href="{% url 'blog:lesson_list' %}"
+           class="inline-block bg-white text-vscode-blue px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+            Rozpocznij naukę
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,184 @@
+<!-- blog/templates/blog/lesson_list.html -->
+{% extends 'blog/base.html' %}
+
+{% block title %}Wszystkie lekcje - Python Blog{% endblock %}
+
+{% block content %}
+<!-- Hero Section with animated background -->
+<div class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <!-- Animated background blobs -->
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-0 left-1/4 w-72 h-72 bg-vscode-blue rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-72 h-72 bg-vscode-purple rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-0 left-1/2 w-72 h-72 bg-accent-cyan rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="text-center">
+            <!-- Icon/logo -->
+             {% if category %}
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-vscode-blue/20 rounded-2xl mb-6 backdrop-blur-sm animate-float">
+                <span class="text-5xl">{{ category.icon }}</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4 animate-fade-in">
+                Lekcje {{ category.name }}
+            </h1>
+            {% else %}
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-vscode-blue/20 rounded-2xl mb-6 backdrop-blur-sm animate-float">
+                <span class="text-5xl">🐍</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4 animate-fade-in">
+                Lekcje Python i Django
+            </h1>
+            {% endif %}
+            <p class="text-xl text-blue-200 max-w-2xl mx-auto mb-8 animate-fade-in">
+                Naucz się programowania krok po kroku - od podstaw do zaawansowanych technik
+            </p>
+
+            <!-- Quick stats -->
+            <div class="flex justify-center gap-8 mt-8 animate-slide-up">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white">{{ total_lessons }}</div>
+                    <div class="text-sm text-blue-300">Lekcji</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white">{{ categories|length }}</div>
+                    <div class="text-sm text-blue-300">Kategorie</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white">∞</div>
+                    <div class="text-sm text-blue-300">Możliwości</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col lg:flex-row gap-8">
+
+        <!-- Sidebar - Filters -->
+        <aside class="lg:w-64 flex-shrink-0">
+            <div class="bg-dark-card border border-dark-border rounded-2xl p-6 sticky top-24">
+                <h2 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-vscode-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                    </svg>
+                    Filtruj
+                </h2>
+
+                <!-- Categories -->
+                <div class="mb-6">
+                    <h3 class="text-sm font-semibold text-slate-400 mb-3 uppercase tracking-wider">
+                        Kategorie
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="{% url 'blog:lesson_list' %}"
+                               class="flex items-center gap-3 p-3 rounded-lg hover:bg-dark-lighter cursor-pointer transition-colors group text-sm text-slate-300 hover:text-white">
+                                <span class="text-xl">📚</span>
+                                <span>Wszystkie</span>
+                            </a>
+                        </li>
+                        {% for category in categories %}
+                        <li>
+                            <a href="{% url 'blog:lesson_list_by_category' category.slug %}"
+                               class="flex items-center gap-3 p-3 rounded-lg hover:bg-dark-lighter cursor-pointer transition-colors group text-sm text-slate-300 hover:text-white">
+                                <span class="text-xl">{{ category.icon }}</span>
+                                <span>{{ category.name }}</span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Difficulty -->
+                <div>
+                    <h3 class="text-sm font-semibold text-slate-400 mb-3 uppercase tracking-wider">
+                        Poziom
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="?difficulty=beginner"
+                               class="flex items-center gap-3 p-3 rounded-lg hover:bg-dark-lighter cursor-pointer transition-colors group text-sm text-slate-300 hover:text-white">
+                                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                                <span>Początkujący</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="?difficulty=intermediate"
+                               class="flex items-center gap-3 p-3 rounded-lg hover:bg-dark-lighter cursor-pointer transition-colors group text-sm text-slate-300 hover:text-white">
+                                <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                                <span>Średniozaawansowany</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="?difficulty=advanced"
+                               class="flex items-center gap-3 p-3 rounded-lg hover:bg-dark-lighter cursor-pointer transition-colors group text-sm text-slate-300 hover:text-white">
+                                <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                                <span>Zaawansowany</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-grow">
+            <!-- Stats -->
+            <div class="bg-dark-card border border-dark-border rounded-2xl shadow-lg p-6 mb-8">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl font-bold text-white">
+                        {% if category %}
+                            <span class="text-vscode-blue">{{ category.icon }}</span> {{ category.name }}
+                        {% else %}
+                            Wszystkie lekcje
+                        {% endif %}
+                    </h2>
+                    <span class="text-text-muted">
+                        Liczba lekcji: <span class="text-vscode-blue font-bold">{{ total_lessons }}</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Lessons Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {% for lesson in lessons %}
+                    {% include 'blog/components/lesson_card.html' %}
+                {% empty %}
+                <div class="col-span-2 text-center py-12">
+                    <p class="text-gray-600 text-lg">Brak lekcji w tej kategorii.</p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            {% if is_paginated %}
+            <div class="mt-12 flex justify-center">
+                <nav class="flex items-center space-x-2">
+                    {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}"
+                       class="px-4 py-2 bg-dark-card border border-dark-border text-text-light rounded-lg hover:bg-dark-lighter hover:border-vscode-blue transition">
+                        Poprzednia
+                    </a>
+                    {% endif %}
+
+                    <span class="px-4 py-2 text-slate-400">
+                        Strona <span class="text-white font-semibold">{{ page_obj.number }}</span> z {{ page_obj.paginator.num_pages }}
+                    </span>
+
+                    {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}"
+                       class="px-4 py-2 bg-dark-card border border-dark-border text-text-light rounded-lg hover:bg-dark-lighter hover:border-vscode-blue transition">
+                        Następna
+                    </a>
+                    {% endif %}
+                </nav>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

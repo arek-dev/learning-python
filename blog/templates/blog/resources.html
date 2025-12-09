@@ -1,0 +1,110 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Biblioteka Zasobów - Python & Django Blog{% endblock %}
+{% block meta_description %}Przeglądaj linki do dokumentacji, tutoriali, narzędzi i innych zasobów do nauki Pythona i Django{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 mb-12">
+    <!-- Animated background blobs -->
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-0 left-1/4 w-72 h-72 bg-vscode-blue rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-72 h-72 bg-vscode-purple rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-0 left-1/2 w-72 h-72 bg-accent-cyan rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+    </div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="text-center">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-vscode-blue/20 rounded-2xl mb-6 backdrop-blur-sm animate-float">
+                <span class="text-5xl">📚</span>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4 animate-fade-in">
+                Biblioteka Zasobów
+            </h1>
+            <p class="text-xl text-blue-200 max-w-2xl mx-auto mb-8 animate-fade-in">
+                Najlepsze linki, dokumentacje, tutoriale i narzędzia do nauki Pythona i Django
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Resources by Type -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    {% if resources_by_type %}
+        {% for type_name, type_resources in resources_by_type.items %}
+            <div class="mb-12">
+                <div class="mb-6">
+                    <h2 class="text-3xl font-bold text-white inline-flex items-center gap-3">
+                        {% if type_name == 'documentation' %}📖 Dokumentacja{% endif %}
+                        {% if type_name == 'tutorial' %}🎥 Tutoriale{% endif %}
+                        {% if type_name == 'tool' %}🛠️ Narzędzia{% endif %}
+                        {% if type_name == 'article' %}📄 Artykuły{% endif %}
+                        {% if type_name == 'course' %}🎓 Kursy{% endif %}
+                        {% if type_name == 'other' %}🔗 Inne{% endif %}
+
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {% for resource in type_resources %}
+                        <a href="{{ resource.url }}"
+                           target="{% if resource.is_external %}_blank{% else %}_self{% endif %}"
+                           class="bg-dark-card border border-dark-border rounded-xl p-6 hover:shadow-lg transition-all hover:border-vscode-blue/50 group">
+                            <div class="flex items-start gap-4">
+                                <div class="text-3xl group-hover:scale-110 transition-transform">
+                                    {% for type_choice in blog.models.Resource.TYPE_CHOICES %}
+                                        {% if type_choice.0 == resource.resource_type %}
+                                            {{ type_choice.1|slice:":2" }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div class="flex-grow min-w-0">
+                                    <h3 class="font-bold text-lg mb-2 text-white group-hover:text-vscode-blue transition-colors truncate">
+                                        {{ resource.title }}
+                                        {% if resource.is_external %}
+                                            <span class="inline-block ml-2 text-xs opacity-70">🔗</span>
+                                        {% endif %}
+                                    </h3>
+                                    <p class="text-gray-400 text-sm leading-relaxed line-clamp-3">
+                                        {{ resource.description }}
+                                    </p>
+                                    <div class="mt-3 flex items-center justify-between">
+                                        <span class="text-xs text-gray-500">
+                                            {{ resource.created_at|date:"d.m.Y" }}
+                                        </span>
+                                        <span class="text-vscode-blue text-xs font-medium group-hover:text-accent-cyan transition-colors">
+                                            {% if resource.is_external %}Otwórz →{% else %}Zobacz →{% endif %}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="text-center py-16">
+            <div class="text-6xl mb-4">🔍</div>
+            <h2 class="text-2xl font-bold text-white mb-4">Brak zasobów</h2>
+            <p class="text-gray-400">
+                Jeszcze nie dodano żadnych zasobów. Wróć później!
+            </p>
+        </div>
+    {% endif %}
+</div>
+
+<!-- CTA Section -->
+<div class="relative overflow-hidden bg-gradient-to-r from-vscode-blue to-vscode-purple text-white">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <h2 class="text-3xl font-bold mb-4">Masz coś cennego?</h2>
+        <p class="text-xl mb-8">Podziel się linkiem, który pomógł Ci w nauce</p>
+        <a href="mailto:arek.smykowski@gmail.com"
+           class="inline-block bg-white text-vscode-blue px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+            Zgłoś zasób
+        </a>
+    </div>
+</div>
+{% endblock %}

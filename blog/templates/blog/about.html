@@ -1,0 +1,210 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900">
+    <!-- Hero Section -->
+    <div class="relative overflow-hidden">
+        <!-- Animated background blobs -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-0 left-1/4 w-72 h-72 bg-vscode-blue rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+            <div class="absolute top-0 right-1/4 w-72 h-72 bg-vscode-purple rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+            <div class="absolute bottom-0 left-1/2 w-72 h-72 bg-accent-cyan rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center w-24 h-24 bg-vscode-blue/20 rounded-full mb-8 backdrop-blur-sm animate-float">
+                    <span class="text-6xl">👋</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-4 animate-fade-in">
+                    Cześć, jestem Arek
+                </h1>
+                <p class="text-xl text-blue-200 max-w-2xl mx-auto animate-fade-in">
+                    Grafik z przeszłości, Python developer z przyszłości
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <div class="space-y-12">
+            <!-- Skąd się tu wziąłem? -->
+            <div class="bg-dark-card border border-dark-border rounded-2xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6">Skąd się tu wziąłem?</h2>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                    Przez ponad 20 lat zajmowałem się grafiką komputerową i fotografią.
+                    Potem przez kilka lat pracowałem z Drupalem (PHP/CMS). A teraz?
+                    Uczę się Pythona i Django, bo chcę zostać Python developerem.
+                </p>
+            </div>
+
+            <!-- Dlaczego ta strona? -->
+            <div class="bg-dark-card border border-dark-border rounded-2xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6">Dlaczego ta strona?</h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                    Kiedy zacząłem naukę, zbierałem wszystkie materiały w Obsidian -
+                    notatki, snippety, rozwiązania problemów. Z czasem tego przybyło
+                    sporo i pomyślałem: "Skoro i tak uczę się Django, czemu nie zrobić
+                    z tego prawdziwego projektu?"
+                </p>
+                <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                    I tak powstał ten blog. To jest:
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <span class="text-vscode-blue text-xl font-bold">•</span>
+                        <div>
+                            <strong class="text-white">Mój projekt portfolio</strong> - konkretna aplikacja Django, nie tylko tutorial
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-vscode-blue text-xl font-bold">•</span>
+                        <div>
+                            <strong class="text-white">Moja dokumentacja nauki</strong> - co zadziałało, co nie, jakie błędy popełniłem
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-vscode-blue text-xl font-bold">•</span>
+                        <div>
+                            <strong class="text-white">Może pomoże innym</strong> - jeśli też zaczynasz, nie musisz szukać rozproszonych materiałów
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Co znajdziesz? -->
+            <div class="bg-dark-card border border-dark-border rounded-2xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6">Co znajdziesz?</h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                    Praktyczne lekcje z Pythona i Django, które sam przerabiałem. Bez teorii
+                    dla teorii - tylko to, co naprawdę przydaje się w projektach. Snippety kodu,
+                    rozwiązania problemów, błędy których możesz uniknąć.
+                </p>
+            </div>
+
+            <!-- Nie jestem ekspertem -->
+            <div class="bg-dark-card border border-dark-border rounded-2xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6">Nie jestem ekspertem</h2>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                    I nie udaję. Jestem w podobnym miejscu co Ty - uczę się, popełniam błędy,
+                    szukam rozwiązań. Ta strona rośnie razem ze mną. Jeśli znajdziesz błąd
+                    albo masz lepsze rozwiązanie - daj znać!
+                </p>
+            </div>
+
+            <!-- Moje umiejętności -->
+            <div class="bg-dark-card border border-dark-border rounded-2xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6">Moje umiejętności</h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                    Chociaż obecnie skupiam się na Pythonie, moje wieloletnie doświadczenie dało mi solidne podstawy w różnych obszarach web developmentu.
+                </p>
+
+                <div class="space-y-8">
+                    <!-- Główny kierunek -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-3 h-3 bg-vscode-blue rounded-full"></div>
+                            <h3 class="text-xl font-bold text-white">Główny kierunek (Python)</h3>
+                        </div>
+                        <div class="ml-6 space-y-2">
+                            <div class="bg-black/50 rounded-lg p-4 font-mono text-sm text-vscode-blue">
+                                Python (Django)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Frontend -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-3 h-3 bg-accent-cyan rounded-full"></div>
+                            <h3 class="text-xl font-bold text-white">Frontend</h3>
+                        </div>
+                        <div class="ml-6 space-y-2">
+                            <div class="bg-black/50 rounded-lg p-4 font-mono text-sm">
+                                HTML5, CSS3, Tailwind CSS, SASS, Twig
+                            </div>
+                            <div class="bg-black/50 rounded-lg p-4 font-mono text-sm">
+                                JavaScript (podstawy React/jQuery)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Doświadczenie -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-3 h-3 bg-vscode-purple rounded-full"></div>
+                            <h3 class="text-xl font-bold text-white">Doświadczenie (PHP/CMS)</h3>
+                        </div>
+                        <div class="ml-6 space-y-2">
+                            <div class="bg-black/50 rounded-lg p-4 font-mono text-sm">
+                                Drupal, PHP
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Narzędzia -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+                            <h3 class="text-xl font-bold text-white">Narzędzia i inne</h3>
+                        </div>
+                        <div class="ml-6 space-y-2">
+                            <div class="bg-black/50 rounded-lg p-4 font-mono text-sm text-gray-300">
+                                Git, Docker, Linux, Jira, macOS, Adobe CC
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech stack -->
+            <div class="bg-dark-card border border-dark-border rounded-2xl p-8">
+                <h2 class="text-3xl font-bold text-white mb-6">Tech stack tej strony</h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                    Skoro pytasz (a na pewno chciałeś/aś zapytać 😉):
+                </p>
+                <div class="bg-black/50 rounded-lg p-4 font-mono text-sm">
+                    <div class="text-vscode-blue">- Django 5.x</div>
+                    <div class="text-accent-cyan">- Tailwind CSS</div>
+                    <div class="text-vscode-blue">- Deployed on PythonAnywhere</div>
+                    <div class="text-vscode-purple">- Zarządzanie środowiskiem: uv + pyenv</div>
+                </div>
+                <p class="text-gray-300 text-lg leading-relaxed mt-4">
+                    Kod nie jest perfekcyjny. To projekt uczący, nie produkcyjna aplikacja
+                    dla miliona użytkowników. Ale działa i z każdym commitem jest lepszy.
+                </p>
+            </div>
+
+            <!-- Porozmawiajmy! -->
+            <div class="bg-gradient-to-r from-vscode-blue to-vscode-purple rounded-2xl p-8 text-center">
+                <h2 class="text-3xl font-bold text-white mb-6">Porozmawiajmy!</h2>
+                <p class="text-blue-100 text-lg leading-relaxed mb-8">
+                    Szukam swojej pierwszej szansy jako Python Developer. Jeśli podoba Ci się mój projekt, masz pytania lub chcesz porozmawiać o współpracy - jestem otwarty na kontakt.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <!-- Email -->
+                    <a href="mailto:arek.smykowski@gmail.com"
+                       class="flex items-center gap-3 bg-white text-vscode-blue px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        arek.smykowski@gmail.com
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/arek-smykowski/"
+                       target="_blank"
+                       class="flex items-center gap-3 border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-vscode-blue transition">
+                        <svg class="w-5 h-5 group-hover:fill-current group-hover:text-vscode-blue transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,347 @@
+@import "tailwindcss";
+
+@theme {
+  /* Custom colors (VS Code style) */
+  --color-vscode-blue: #007ACC;
+  --color-vscode-purple: #68217A;
+  --color-accent-cyan: #4EC9B0;
+  --color-dark-bg: #1E1E1E;
+  --color-dark-card: #252526;
+  --color-dark-lighter: #2D2D30;
+  --color-dark-border: #3E3E42;
+  --color-text-light: #D4D4D4;
+  --color-text-muted: #858585;
+
+  /* Custom animations */
+  --animate-blob: blob 7s infinite;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.5s ease-out;
+}
+
+/* Keyframes */
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Animation delays */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Custom gradient */
+.gradient-custom {
+  background: linear-gradient(#1e415e 10%, #2b5b84 90%);
+}
+
+/* Prose styling (DARK THEME) */
+.prose-custom {
+  @apply text-text-light leading-relaxed;
+}
+
+.prose-custom h1 {
+  @apply text-4xl font-bold text-white mt-8 mb-4;
+}
+
+.prose-custom h2 {
+  @apply text-3xl font-bold text-white mt-8 mb-4 border-b-2 border-dark-border pb-2;
+}
+
+.prose-custom h3 {
+  @apply text-2xl font-semibold text-white mt-6 mb-3;
+}
+
+.prose-custom p {
+  @apply mb-4 leading-7 text-text-light;
+}
+
+.prose-custom ul, .prose-custom ol {
+  @apply my-4 ml-6 space-y-2;
+}
+
+.prose-custom li {
+  @apply leading-7 text-text-light;
+}
+
+.prose-custom ul li {
+  @apply list-disc;
+}
+
+.prose-custom ol li {
+  @apply list-decimal;
+}
+
+.prose-custom a {
+  @apply text-vscode-blue hover:text-accent-cyan underline;
+}
+
+.prose-custom code {
+  @apply bg-dark-lighter text-accent-cyan px-2 py-0.5 rounded text-sm font-mono;
+}
+
+.prose-custom pre {
+  @apply bg-gray-900 rounded-lg p-4 overflow-x-auto my-6 relative;
+}
+
+.prose-custom pre code {
+  @apply bg-transparent text-gray-100 p-0;
+}
+
+.prose-custom blockquote {
+  @apply border-l-4 border-blue-500 pl-4 py-2 my-4 bg-blue-50 italic;
+}
+
+.prose-custom table {
+  @apply w-full my-6 border-collapse;
+}
+
+.prose-custom th {
+  @apply bg-gray-100 border border-gray-300 px-4 py-2 text-left font-semibold;
+}
+
+.prose-custom td {
+  @apply border border-gray-300 px-4 py-2;
+}
+
+/* Copy button */
+.copy-btn {
+  @apply absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded cursor-pointer transition;
+}
+
+/* Details/Summary */
+.prose-custom details {
+  @apply border border-gray-300 rounded-lg p-4 my-4 cursor-pointer hover:border-blue-500 transition;
+}
+
+.prose-custom summary {
+  @apply font-semibold text-blue-600 hover:text-blue-800;
+}
+
+/* Style dla treści markdown */
+.prose-custom {
+    line-height: 1.7;
+    color: #d5d5d5;
+    max-width: none;
+}
+
+.prose-custom h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #bfbfbf;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+}
+
+.prose-custom h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #bfbfbf;
+    margin-top: 2rem;
+}
+
+.prose-custom h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #bfbfbf;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.prose-custom p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.prose-custom ul, .prose-custom ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.prose-custom li {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+}
+
+.prose-custom ul li {
+    list-style-type: disc;
+}
+
+.prose-custom ol li {
+    list-style-type: decimal;
+}
+
+.prose-custom a {
+    color: #cdcdcd;
+    text-decoration: underline;
+}
+
+.prose-custom a:hover {
+    color: #a7a7a7;
+}
+
+.prose-custom code {
+    background-color: #f3f4f6;
+    color: #dc2626;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.prose-custom pre {
+    background-color: #171717;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    overflow-x: auto;
+    margin: 0.5rem 0 1.5rem 0;
+    position: relative;
+}
+
+.prose-custom pre code {
+    background-color: transparent;
+    color: #f9fafb;
+    padding: 0;
+}
+
+.prose-custom blockquote {
+    border-left: 4px solid #3b82f6;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    background-color: #eff6ff;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    font-style: italic;
+    color: #4b5563;
+}
+
+.prose-custom table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+.prose-custom th {
+    background-color: #626262;
+    border: 1px solid #e5e7eb;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.prose-custom td {
+    border: 1px solid #e5e7eb;
+    padding: 0.75rem 1rem;
+}
+
+/* Copy button dla code blocks */
+.copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: #4b5563;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.copy-btn:hover {
+    background-color: #6b7280;
+}
+
+/* Navigation */
+nav {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+/* Footer */
+footer {
+    background-color: #111827;
+    color: #d1d5db;
+    margin-top: 4rem;
+}
+
+/* Cards */
+.lesson-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lesson-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Fixes dla konkretnych problemów */
+.bg-gradient-to-r {
+    background: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to));
+}
+
+.from-custom-500 {
+    --tw-gradient-from: #1e415e;
+}
+
+.to-custom-500 {
+    --tw-gradient-to: #2b5b84;
+}
+
+.from-custom-600 {
+    --tw-gradient-from: #2b5b84;
+}
+
+.to-custom-600 {
+    --tw-gradient-to: #1e415e;
+}
+
+.from-\[0C4B33\] {
+    --tw-gradient-from: #0C4B33;
+}
+
+.to-\[44b78b\] {
+    --tw-gradient-to: #44b78b;
+}
+
+.bg-bluenew-200 {
+    background-color: #458bba;
+}
+
+.bg-bluenew-300 {
+    background-color: #415562;
+}
+
+.bg-darkgray-900 {
+    background-color: #121212;
+}
+
+.bg-violet2-400 {
+    background-color: #D799F2;
+}
