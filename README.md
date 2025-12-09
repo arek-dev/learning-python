@@ -24,3 +24,17 @@ Full-stack Django application with 40 programming lessons (for now) covering Pyt
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
+
+## 📸 Screenshots
+
+### Homepage
+![Homepage](screenshots/homepage.png)
+*Main landing page with 40 lessons, learning paths, and course statistics*
+
+### Lesson Page
+![Lesson Page](screenshots/lesson.png)
+*Interactive lesson content - "Views in Django" with structured learning materials*
+
+### Admin Panel
+![Admin Panel](screenshots/admin.png)
+*Django admin interface for content management with filtering and bulk actions*
